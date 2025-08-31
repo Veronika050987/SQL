@@ -1,21 +1,21 @@
-CREATE DATABASE PD_411_all_in_one
-ON		-- параметр ON задаёт свойство файла создаваемой базы
+п»їCREATE DATABASE PD_411_all_in_one
+ON		-- РїР°СЂР°РјРµС‚СЂ ON Р·Р°РґР°С‘С‚ СЃРІРѕР№СЃС‚РІРѕ С„Р°Р№Р»Р° СЃРѕР·РґР°РІР°РµРјРѕР№ Р±Р°Р·С‹
 (
-	NAME		= PD_411_all_in_one, --ЛОГИЧЕСКОЕ ИМЯ ФАЙЛА
-	FILENAME	= 'D:\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQL\Data\PD_411_all_in_one.mdf',--ФИЗИЧЕСКОЕ ИМЯ ФАЙЛА
+	NAME		= PD_411_all_in_one, --Р›РћР“РР§Р•РЎРљРћР• РРњРЇ Р¤РђР™Р›Рђ
+	FILENAME	= 'D:\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQL\Data\PD_411_all_in_one.mdf',--Р¤РР—РР§Р•РЎРљРћР• РРњРЇ Р¤РђР™Р›Рђ
 	SIZE		= 8MB,
 	MAXSIZE		= 500MB,
 	FILEGROWTH	= 5MB
 )
-LOG ON	-- этот параметр задаёт свойство файла журнала базы данных
+LOG ON	-- СЌС‚РѕС‚ РїР°СЂР°РјРµС‚СЂ Р·Р°РґР°С‘С‚ СЃРІРѕР№СЃС‚РІРѕ С„Р°Р№Р»Р° Р¶СѓСЂРЅР°Р»Р° Р±Р°Р·С‹ РґР°РЅРЅС‹С…
 (
 	NAME		= PD_411_all_in_one_Log,
-	FILENAME	= 'D:\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQL\Data\PD_411_all_in_one_log.ldf',--ФИЗИЧЕСКОЕ ИМЯ ФАЙЛА
+	FILENAME	= 'D:\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQL\Data\PD_411_all_in_one_log.ldf',--Р¤РР—РР§Р•РЎРљРћР• РРњРЇ Р¤РђР™Р›Рђ
 	SIZE		= 8MB,
 	MAXSIZE		= 500MB,
 	FILEGROWTH	= 8MB
 );
-GO		-- применить
+GO		-- РїСЂРёРјРµРЅРёС‚СЊ
 
 USE PD_411_all_in_one;
 GO
