@@ -10,9 +10,9 @@ GO
 --	PD_321.dbo.Students (last_name, first_name, middle_name, birth_date, [group])
 --SELECT last_name, first_name, middle_name, birth_date, [group] FROM PD_411.dbo.Students; 
 
-SELECT COUNT(stud_id) AS N'Количество студентов', [group] AS N'Номер группы'
-FROM Students
-GROUP BY [group];
+--SELECT COUNT(stud_id) AS N'Количество студентов', [group] AS N'Номер группы'
+--FROM Students
+--GROUP BY [group];
 
 --SELECT COUNT(s.stud_id) AS N'Количество студентов'
 ----, g.group_id AS N'Номер группы'
@@ -21,3 +21,10 @@ GROUP BY [group];
 --WHERE  g.group_id = s.[group]
 --GROUP BY g.direction
 --;
+
+--SELECT s.[group], COUNT(s.stud_id) AS N'Количество студентов'
+--FROM Students AS s
+--JOIN Groups AS gr ON  s.[group] = gr.group_id
+--GROUP BY s.[group];
+
+
