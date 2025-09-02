@@ -1,4 +1,4 @@
---SQLQuery3-INSERT FROM PD_411.sql
+п»ї--SQLQuery3-INSERT FROM PD_411.sql
 USE PD_321;
 GO
 
@@ -10,21 +10,21 @@ GO
 --	PD_321.dbo.Students (last_name, first_name, middle_name, birth_date, [group])
 --SELECT last_name, first_name, middle_name, birth_date, [group] FROM PD_411.dbo.Students; 
 
---SELECT COUNT(stud_id) AS N'Количество студентов', [group] AS N'Номер группы'
+--SELECT COUNT(stud_id) AS N'РљРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СѓРґРµРЅС‚РѕРІ', [group] AS N'РќРѕРјРµСЂ РіСЂСѓРїРїС‹'
 --FROM Students
 --GROUP BY [group];
 
---SELECT COUNT(s.stud_id) AS N'Количество студентов'
-----, g.group_id AS N'Номер группы'
---, g.direction AS N'Направление'
+--SELECT COUNT(s.stud_id) AS N'РљРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СѓРґРµРЅС‚РѕРІ'
+----, g.group_id AS N'РќРѕРјРµСЂ РіСЂСѓРїРїС‹'
+--, g.direction AS N'РќР°РїСЂР°РІР»РµРЅРёРµ'
 --FROM Students AS s, Groups AS g, Directions AS d
 --WHERE  g.group_id = s.[group]
 --GROUP BY g.direction
 --;
 
---SELECT s.[group], COUNT(s.stud_id) AS N'Количество студентов'
+--SELECT s.[group], COUNT(s.stud_id) AS N'РљРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СѓРґРµРЅС‚РѕРІ'
 --FROM Students AS s
 --JOIN Groups AS gr ON  s.[group] = gr.group_id
---GROUP BY s.[group];
+--GROUP BY s.[group];  
 
 
