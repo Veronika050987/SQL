@@ -14,17 +14,18 @@ GO
 --FROM Students
 --GROUP BY [group];
 
---SELECT COUNT(s.stud_id) AS N'Количество студентов'
-----, g.group_id AS N'Номер группы'
---, g.direction AS N'Направление'
---FROM Students AS s, Groups AS g, Directions AS d
---WHERE  g.group_id = s.[group]
---GROUP BY g.direction
---;
+SELECT  COUNT(s.stud_id) AS N'Количество студентов' 
+, g.direction AS N'Направление' 
+--, d.direction_name
+--, g.group_id AS N'Номер группы'
+FROM Students AS s, Groups AS g, Directions AS d
+WHERE   (s.[group] = g.group_id and g.direction = d.direction_id)
+GROUP BY g.direction
+;
 
---SELECT s.[group], COUNT(s.stud_id) AS N'Количество студентов'
---FROM Students AS s
---JOIN Groups AS gr ON  s.[group] = gr.group_id
---GROUP BY s.[group];  
+SELECT s.[group], COUNT(s.stud_id) AS N'Количество студентов'
+FROM Students AS s
+JOIN Groups AS gr ON  s.[group] = gr.group_id
+GROUP BY s.[group];  
 
 
