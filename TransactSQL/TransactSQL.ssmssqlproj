@@ -22,6 +22,24 @@
     </LogicalFolder>
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
       <Items>
+        <FileNode Name="SQLQuery0-Calling Procedures.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-4AUB2J6T\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-4AUB2J6T\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery0-Calling Procedures.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery100-CREATE FUNCTION NextLearningDay.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-4AUB2J6T\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-4AUB2J6T\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery100-CREATE FUNCTION NextLearningDay.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery100-IsLearningDay.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-4AUB2J6T\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-4AUB2J6T\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery100-IsLearningDay.sql</FullPath>
+        </FileNode>
         <FileNode Name="SQLQuery1-INSERT Schedule.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-4AUB2J6T\SQLEXPRESS:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>LAPTOP-4AUB2J6T\SQLEXPRESS</AssociatedConnSrvName>
@@ -39,6 +57,18 @@
           <AssociatedConnSrvName>LAPTOP-4AUB2J6T\SQLEXPRESS</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>SQLQuery3-INSERT Schedule PD_411.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery4-CREATE PROCEDURE sp_Addchedule.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-4AUB2J6T\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-4AUB2J6T\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery4-CREATE PROCEDURE sp_Addchedule.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery4-CREATE PROCEDURE sp_SelectSchedule.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-4AUB2J6T\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-4AUB2J6T\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery4-CREATE PROCEDURE sp_SelectSchedule.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>

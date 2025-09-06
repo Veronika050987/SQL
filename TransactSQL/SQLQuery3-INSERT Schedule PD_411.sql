@@ -1,4 +1,4 @@
---SQLQuery3-INSERT Schedule PD_411.sql
+п»ї--SQLQuery3-INSERT Schedule PD_411.sql
 USE PD_321;
 GO
 
@@ -22,12 +22,12 @@ DECLARE		@lessons_count1		AS		TINYINT	=	(SELECT number_of_lessons	FROM Disciplin
 DECLARE		@discipline2		AS		SMALLINT=	(SELECT	discipline_id		FROM Disciplines	WHERE discipline_name LIKE N'%UML%');
 DECLARE		@lessons_count2		AS		TINYINT	=	(SELECT number_of_lessons	FROM Disciplines	WHERE discipline_name LIKE N'%UML%');
 
-DECLARE		@discipline3		AS		SMALLINT=	(SELECT	discipline_id		FROM Disciplines	WHERE discipline_name LIKE N'%приложений на языке C#%');
-DECLARE		@lessons_count3		AS		TINYINT	=	(SELECT number_of_lessons	FROM Disciplines	WHERE discipline_name LIKE N'%приложений на языке C#%');
+DECLARE		@discipline3		AS		SMALLINT=	(SELECT	discipline_id		FROM Disciplines	WHERE discipline_name LIKE N'%РїСЂРёР»РѕР¶РµРЅРёР№ РЅР° СЏР·С‹РєРµ C#%');
+DECLARE		@lessons_count3		AS		TINYINT	=	(SELECT number_of_lessons	FROM Disciplines	WHERE discipline_name LIKE N'%РїСЂРёР»РѕР¶РµРЅРёР№ РЅР° СЏР·С‹РєРµ C#%');
 
 
 DECLARE		@group				AS		INT		=	(SELECT group_id			FROM Groups			WHERE group_name='PD_411');
-DECLARE		@teacher			AS		INT		=	(SELECT teacher_id			FROM Teachers		WHERE first_name=N'Олег');
+DECLARE		@teacher			AS		INT		=	(SELECT teacher_id			FROM Teachers		WHERE first_name=N'РћР»РµРі');
 
 PRINT		(@start_date1);
 PRINT		(@discipline1);

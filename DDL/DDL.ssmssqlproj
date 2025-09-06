@@ -76,6 +76,12 @@
           <AssociatedConnUserName />
           <FullPath>SQLQuery4-CREATE TABLEs SCHEDULE.sql</FullPath>
         </FileNode>
+        <FileNode Name="SQLQuery5-ALTER Groups.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery5-ALTER Groups.sql</FullPath>
+        </FileNode>
       </Items>
     </LogicalFolder>
     <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
