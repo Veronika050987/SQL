@@ -2,7 +2,7 @@
 USE PD_321;
 GO
 
-SET DATEFIRST 1;
+SET DATEFIRST 1;--Дни недели считаются с 1 по 7 с Пн по Вс.
 
 DECLARE		@start_date			AS		DATE	=	'2025-08-18';
 DECLARE		@date				AS		DATE	=	@start_date;

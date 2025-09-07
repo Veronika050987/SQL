@@ -58,11 +58,11 @@
           <AssociatedConnUserName />
           <FullPath>SQLQuery3-INSERT Schedule PD_411.sql</FullPath>
         </FileNode>
-        <FileNode Name="SQLQuery4-CREATE PROCEDURE sp_Addchedule.sql">
+        <FileNode Name="SQLQuery4-CREATE PROCEDURE sp_AddSchedule.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-4AUB2J6T\SQLEXPRESS:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>LAPTOP-4AUB2J6T\SQLEXPRESS</AssociatedConnSrvName>
           <AssociatedConnUserName />
-          <FullPath>SQLQuery4-CREATE PROCEDURE sp_Addchedule.sql</FullPath>
+          <FullPath>SQLQuery4-CREATE PROCEDURE sp_AddSchedule.sql</FullPath>
         </FileNode>
         <FileNode Name="SQLQuery4-CREATE PROCEDURE sp_SelectSchedule.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-4AUB2J6T\SQLEXPRESS:True</AssociatedConnectionMoniker>
