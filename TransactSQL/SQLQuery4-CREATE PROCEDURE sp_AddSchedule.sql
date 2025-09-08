@@ -28,15 +28,27 @@ BEGIN
 	PRINT(@start_date);
 	PRINT(@start_time);
 
+	IF EXISTS		(SELECT lesson_id FROM Schedule WHERE [group]=@group AND discipline=@discipline)
+	BEGIN
+		PRINT('--- 1 ---');
+		PRINT(FORMATMESSAGE(N'Дисциплина "%s" уже выставлена для группы "%s"', @discipline_name, @group_name));
+		RETURN;
+	END
+
 	WHILE @lesson_number <= @lessons_count
 	BEGIN
-			IF NOT EXISTS	(SELECT lesson_id FROM Schedule WHERE [group]=@group AND discipline = @discipline AND [date]=@date)
+			IF NOT EXISTS	(SELECT lesson_id FROM Schedule WHERE [group]=@group AND discipline = @discipline AND [date]=@date AND [time]=@start_time)
 			BEGIN
 				INSERT Schedule
 					([group], discipline, teacher, [date], [time], spent)
 				VALUES
 					(@group, @discipline, @teacher, @date, @start_time, IIF(@date<GETDATE(),1,0)),
 					(@group, @discipline, @teacher, @date, DATEADD(MINUTE,95,@start_time), IIF(@date<GETDATE(),1,0));			
+			END
+			ELSE
+			BEGIN
+				PRINT('--- 2 ---');
+				PRINT(FORMATMESSAGE(N'%s %s у группы %s уже занято', CAST(@date AS NCHAR(10)), CAST(@start_time AS NCHAR(8)), @group_name));
 			END
 			SET	@lesson_number	= @lesson_number+2;
 			SET @date			= dbo.GetNextLearningDay(@group_name, DEFAULT);
