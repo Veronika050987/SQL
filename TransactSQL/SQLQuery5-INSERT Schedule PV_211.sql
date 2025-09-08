@@ -1,4 +1,4 @@
---SQLQuery5-INSERT Schedule PV_211.sql
+п»ї--SQLQuery5-INSERT Schedule PV_211.sql
 USE PD_321;
 GO
 
@@ -25,12 +25,12 @@ DECLARE		@lessons_count1		AS		TINYINT	=	(SELECT number_of_lessons	FROM Disciplin
 DECLARE		@discipline2		AS		SMALLINT=	(SELECT	discipline_id		FROM Disciplines	WHERE discipline_name LIKE N'%UML%');
 DECLARE		@lessons_count2		AS		TINYINT	=	(SELECT number_of_lessons	FROM Disciplines	WHERE discipline_name LIKE N'%UML%');
 
-DECLARE		@discipline3		AS		SMALLINT=	(SELECT	discipline_id		FROM Disciplines	WHERE discipline_name LIKE N'%приложений на языке C#%');
-DECLARE		@lessons_count3		AS		TINYINT	=	(SELECT number_of_lessons	FROM Disciplines	WHERE discipline_name LIKE N'%приложений на языке C#%');
+DECLARE		@discipline3		AS		SMALLINT=	(SELECT	discipline_id		FROM Disciplines	WHERE discipline_name LIKE N'%РїСЂРёР»РѕР¶РµРЅРёР№ РЅР° СЏР·С‹РєРµ C#%');
+DECLARE		@lessons_count3		AS		TINYINT	=	(SELECT number_of_lessons	FROM Disciplines	WHERE discipline_name LIKE N'%РїСЂРёР»РѕР¶РµРЅРёР№ РЅР° СЏР·С‹РєРµ C#%');
 
 
 DECLARE		@group				AS		INT		=	(SELECT group_id			FROM Groups			WHERE group_name='PV_211');
-DECLARE		@teacher			AS		INT		=	(SELECT teacher_id			FROM Teachers		WHERE first_name=N'Олег');
+DECLARE		@teacher			AS		INT		=	(SELECT teacher_id			FROM Teachers		WHERE first_name=N'РћР»РµРі');
 
 PRINT		(@start_date1);
 PRINT		(@discipline1);
@@ -43,8 +43,8 @@ DECLARE		@lesson_number		AS		INT		=	1;
 
 WHILE @lesson_number <= (@lessons_count1 + 1)
 BEGIN
-		-- Генерируем занятия для Понедельника
-	IF DATEPART(WEEKDAY, @date1) = 1 -- Понедельник
+		-- Р“РµРЅРµСЂРёСЂСѓРµРј Р·Р°РЅСЏС‚РёСЏ РґР»СЏ РџРѕРЅРµРґРµР»СЊРЅРёРєР°
+	IF DATEPART(WEEKDAY, @date1) = 1 -- РџРѕРЅРµРґРµР»СЊРЅРёРє
     BEGIN
 		PRINT(@date1);
 		PRINT(DATENAME(WEEKDAY, @date1));
@@ -61,11 +61,11 @@ BEGIN
 		    VALUES (@lesson_number, @group, @discipline1, @teacher, @date1, @start_time1);
 
 		SET @lesson_number = @lesson_number + 1;
-		IF @lesson_number >= @lessons_count1 + 1 BREAK; -- Выходим, если достигли цели
+		IF @lesson_number >= @lessons_count1 + 1 BREAK; -- Р’С‹С…РѕРґРёРј, РµСЃР»Рё РґРѕСЃС‚РёРіР»Рё С†РµР»Рё
 		PRINT('----------------------------------------------------------')
 	END;
 
-    -- Генерируем занятия для Четверга
+    -- Р“РµРЅРµСЂРёСЂСѓРµРј Р·Р°РЅСЏС‚РёСЏ РґР»СЏ Р§РµС‚РІРµСЂРіР°
 	IF DATEPART(WEEKDAY, @date1) = 4
     BEGIN
 		PRINT(@date1);
@@ -82,12 +82,12 @@ BEGIN
 		    VALUES (@lesson_number, @group, @discipline1, @teacher, @date1, @start_time1);
 
 		SET @lesson_number = @lesson_number + 1;
-		IF @lesson_number >= @lessons_count1 + 1 BREAK; -- Выходим, если достигли цели
+		IF @lesson_number >= @lessons_count1 + 1 BREAK; -- Р’С‹С…РѕРґРёРј, РµСЃР»Рё РґРѕСЃС‚РёРіР»Рё С†РµР»Рё
 
 		PRINT('----------------------------------------------------------')
 	END;
 
-    -- Генерируем занятия для Пятницы
+    -- Р“РµРЅРµСЂРёСЂСѓРµРј Р·Р°РЅСЏС‚РёСЏ РґР»СЏ РџСЏС‚РЅРёС†С‹
 	IF DATEPART(WEEKDAY, @date1) = 5
     BEGIN
 		PRINT(@date1);
@@ -103,7 +103,7 @@ BEGIN
 		INSERT INTO Schedule (lesson_id, [group], discipline, teacher, [date], [time]) 
 		    VALUES (@lesson_number, @group, @discipline1, @teacher, @date1, @start_time1);
 		SET @lesson_number = @lesson_number + 1;
-		IF @lesson_number >= @lessons_count1 + 1 BREAK; -- Выходим, если достигли цели
+		IF @lesson_number >= @lessons_count1 + 1 BREAK; -- Р’С‹С…РѕРґРёРј, РµСЃР»Рё РґРѕСЃС‚РёРіР»Рё С†РµР»Рё
 		PRINT('----------------------------------------------------------')
 	END;
 
@@ -121,8 +121,8 @@ PRINT		('========================================');
 
 WHILE @lesson_number <= (@lessons_count2 + @lesson_number + 1 )
 BEGIN
-		-- Генерируем занятия для Понедельника
-	IF DATEPART(WEEKDAY, @date2) = 1 -- Понедельник
+		-- Р“РµРЅРµСЂРёСЂСѓРµРј Р·Р°РЅСЏС‚РёСЏ РґР»СЏ РџРѕРЅРµРґРµР»СЊРЅРёРєР°
+	IF DATEPART(WEEKDAY, @date2) = 1 -- РџРѕРЅРµРґРµР»СЊРЅРёРє
     BEGIN
 		PRINT(@date2);
 		PRINT(DATENAME(WEEKDAY, @date2));
@@ -139,11 +139,11 @@ BEGIN
 		    VALUES (@lesson_number, @group, @discipline2, @teacher, @date2, @start_time1);
 
 		SET @lesson_number = @lesson_number + 1;
-		IF @lesson_number >= @lessons_count2 + @lessons_count1 + 1 BREAK; -- Выходим, если достигли цели
+		IF @lesson_number >= @lessons_count2 + @lessons_count1 + 1 BREAK; -- Р’С‹С…РѕРґРёРј, РµСЃР»Рё РґРѕСЃС‚РёРіР»Рё С†РµР»Рё
 		PRINT('----------------------------------------------------------')
 	END;
 
-    -- Генерируем занятия для Четверга
+    -- Р“РµРЅРµСЂРёСЂСѓРµРј Р·Р°РЅСЏС‚РёСЏ РґР»СЏ Р§РµС‚РІРµСЂРіР°
 	IF DATEPART(WEEKDAY, @date2) = 4
     BEGIN
 		PRINT(@date2);
@@ -160,12 +160,12 @@ BEGIN
 		    VALUES (@lesson_number, @group, @discipline2, @teacher, @date2, @start_time1);
 
 		SET @lesson_number = @lesson_number + 1;
-		IF @lesson_number >= @lessons_count2 + @lessons_count1 + 1 BREAK; -- Выходим, если достигли цели
+		IF @lesson_number >= @lessons_count2 + @lessons_count1 + 1 BREAK; -- Р’С‹С…РѕРґРёРј, РµСЃР»Рё РґРѕСЃС‚РёРіР»Рё С†РµР»Рё
 
 		PRINT('----------------------------------------------------------')
 	END;
 
-    -- Генерируем занятия для Пятницы
+    -- Р“РµРЅРµСЂРёСЂСѓРµРј Р·Р°РЅСЏС‚РёСЏ РґР»СЏ РџСЏС‚РЅРёС†С‹
 	IF DATEPART(WEEKDAY, @date2) = 5
     BEGIN
 		PRINT(@date2);
@@ -181,7 +181,7 @@ BEGIN
 		INSERT INTO Schedule (lesson_id, [group], discipline, teacher, [date], [time]) 
 		    VALUES (@lesson_number, @group, @discipline2, @teacher, @date2, @start_time1);
 		SET @lesson_number = @lesson_number + 1;
-		IF @lesson_number >= @lessons_count2 + @lessons_count1 + 1 BREAK; -- Выходим, если достигли цели
+		IF @lesson_number >= @lessons_count2 + @lessons_count1 + 1 BREAK; -- Р’С‹С…РѕРґРёРј, РµСЃР»Рё РґРѕСЃС‚РёРіР»Рё С†РµР»Рё
 		PRINT('----------------------------------------------------------')
 	END;
 
@@ -199,8 +199,8 @@ PRINT		('========================================');
 
 WHILE @lesson_number <= (@lessons_count3 + @lessons_count2 + @lessons_count1 + 1 )
 BEGIN
-		-- Генерируем занятия для Понедельника
-	IF DATEPART(WEEKDAY, @date3) = 1 -- Понедельник
+		-- Р“РµРЅРµСЂРёСЂСѓРµРј Р·Р°РЅСЏС‚РёСЏ РґР»СЏ РџРѕРЅРµРґРµР»СЊРЅРёРєР°
+	IF DATEPART(WEEKDAY, @date3) = 1 -- РџРѕРЅРµРґРµР»СЊРЅРёРє
     BEGIN
 		PRINT(@date3);
 		PRINT(DATENAME(WEEKDAY, @date3));
@@ -217,11 +217,11 @@ BEGIN
 		    VALUES (@lesson_number, @group, @discipline3, @teacher, @date3, @start_time1);
 
 		SET @lesson_number = @lesson_number + 1;
-		IF @lesson_number >= @lessons_count3 + @lessons_count2 + @lessons_count1 + 1 BREAK; -- Выходим, если достигли цели
+		IF @lesson_number >= @lessons_count3 + @lessons_count2 + @lessons_count1 + 1 BREAK; -- Р’С‹С…РѕРґРёРј, РµСЃР»Рё РґРѕСЃС‚РёРіР»Рё С†РµР»Рё
 		PRINT('----------------------------------------------------------')
 	END;
 
-    -- Генерируем занятия для Четверга
+    -- Р“РµРЅРµСЂРёСЂСѓРµРј Р·Р°РЅСЏС‚РёСЏ РґР»СЏ Р§РµС‚РІРµСЂРіР°
 	IF DATEPART(WEEKDAY, @date3) = 4
     BEGIN
 		PRINT(@date3);
@@ -238,12 +238,12 @@ BEGIN
 		    VALUES (@lesson_number, @group, @discipline3, @teacher, @date3, @start_time1);
 
 		SET @lesson_number = @lesson_number + 1;
-		IF @lesson_number >= @lessons_count3 + @lessons_count2 + @lessons_count1 + 1 BREAK; -- Выходим, если достигли цели
+		IF @lesson_number >= @lessons_count3 + @lessons_count2 + @lessons_count1 + 1 BREAK; -- Р’С‹С…РѕРґРёРј, РµСЃР»Рё РґРѕСЃС‚РёРіР»Рё С†РµР»Рё
 
 		PRINT('----------------------------------------------------------')
 	END;
 
-    -- Генерируем занятия для Пятницы
+    -- Р“РµРЅРµСЂРёСЂСѓРµРј Р·Р°РЅСЏС‚РёСЏ РґР»СЏ РџСЏС‚РЅРёС†С‹
 	IF DATEPART(WEEKDAY, @date3) = 5
     BEGIN
 		PRINT(@date3);
@@ -259,7 +259,7 @@ BEGIN
 		INSERT INTO Schedule (lesson_id, [group], discipline, teacher, [date], [time]) 
 		    VALUES (@lesson_number, @group, @discipline3, @teacher, @date3, @start_time1);
 		SET @lesson_number = @lesson_number + 1;
-		IF @lesson_number >= @lessons_count3 + @lessons_count2 + @lessons_count1 + 1 BREAK; -- Выходим, если достигли цели
+		IF @lesson_number >= @lessons_count3 + @lessons_count2 + @lessons_count1 + 1 BREAK; -- Р’С‹С…РѕРґРёРј, РµСЃР»Рё РґРѕСЃС‚РёРіР»Рё С†РµР»Рё
 		PRINT('----------------------------------------------------------')
 	END;
 
