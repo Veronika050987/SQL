@@ -4,8 +4,8 @@ GO
 
 ALTER FUNCTION GetNextLearningDay
 (
-	@group_name		NCHAR(10)
-	--@date			DATE	= NULL --	(SELECT MAX([date]) FROM Schedule WHERE [group] = SELECT group_id FROM Groups WHERE group_name=@group_name));
+	@group_name		NCHAR(10),
+	@date			DATE	= '1900-01-01' --	(SELECT MAX([date]) FROM Schedule WHERE [group] = SELECT group_id FROM Groups WHERE group_name=@group_name));
 )
 RETURNS		DATE
 AS

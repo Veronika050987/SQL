@@ -4,6 +4,7 @@ GO
 
 --DELETE FROM Schedule;
 EXEC sp_AddSchedule N'PD_411', N'%MS SQL Server%', N'Ковтун', '2025-08-18', '13:30';
+EXEC sp_AddSchedule N'PD_411', N'%ADO.NET%', N'Ковтун';
 EXEC sp_SelectSchedule;
 PRINT(dbo.GetNextLearningDay(N'PD_411', NULL));
 PRINT(N'-----------------------------');

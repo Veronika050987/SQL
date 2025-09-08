@@ -7,18 +7,20 @@ CREATE PROCEDURE sp_AddSchedule_PV_211
 	@group_name				AS	NCHAR(10),
 	@discipline_name		AS	NVARCHAR(150),
 	@teacher_last_name		AS	NVARCHAR(50),
-	@start_date				AS	DATE,
-	@start_time				AS	TIME
+	@start_date				AS	DATE		=	'1900-01-01',
+	@start_time				AS	TIME		=	'00:00'
 AS
 BEGIN
---	SET DATEFIRST 1;
+	SET DATEFIRST 1;
 	DECLARE	@group			AS	INT		=	(SELECT group_id			FROM Groups			WHERE group_name=@group_name);
---	DECLARE	@learning_days	AS	TINYINT
+	DECLARE @learning_days	AS	TINYINT	=	(SELECT learning_days		FROM Groups			WHERE group_id	=@group);
 	DECLARE	@discipline		AS	SMALLINT=	(SELECT discipline_id		FROM Disciplines	WHERE discipline_name LIKE @discipline_name);
 	DECLARE @lessons_count	AS	TINYINT	=	(SELECT number_of_lessons	FROM Disciplines	WHERE discipline_id = @discipline);
 	DECLARE @lesson_number	AS	TINYINT	=	1;
 	DECLARE	@teacher		AS	INT		=	(SELECT teacher_id			FROM Teachers		WHERE last_name = @teacher_last_name);
-	DECLARE @date			AS	DATE	=	@start_date;
+	DECLARE @date			AS	DATE	=	IIF(@start_date != '1900-01-01', @start_date, dbo.GetNextLearningDay(@group_name, DEFAULT));
+	
+	SET @start_time			=	IIF(@start_time != '00:00', @start_time, (SELECT start_time FROM Groups WHERE group_id=@group));
 
 	PRINT(@group);
 	PRINT(@discipline);
@@ -37,6 +39,7 @@ BEGIN
 					(@group, @discipline, @teacher, @date, DATEADD(MINUTE,95,@start_time), IIF(@date<GETDATE(),1,0));			
 			END
 			SET	@lesson_number	= @lesson_number+2;
-			SET @date			= DATEADD(DAY, IIF(DATEPART(WEEKDAY,@date)=5, 3, 2), @date);
+			SET @date			= dbo.GetNextLearningDay(@group_name, DEFAULT);
+			--SET @date			= DATEADD(DAY, IIF(DATEPART(WEEKDAY,@date)=5, 3, 2), @date);
 	END
 END
