@@ -3,6 +3,7 @@ USE PD_321;
 GO
 
 --DELETE FROM Schedule;
+--SELECT * FROM Schedule; 
 EXEC sp_AddSchedule N'PD_411', N'%MS SQL Server%', N'Ковтун', '2024-12-23', '13:30';
 EXEC sp_AddSchedule N'PD_411', N'%ADO.NET%', N'Ковтун';
 EXEC sp_AddSchedule N'PD_411', N'Системное программирование%', N'Ковтун';

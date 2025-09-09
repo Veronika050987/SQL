@@ -19,18 +19,7 @@ BEGIN
 	DECLARE @lesson_number	AS	TINYINT	=	1;
 	DECLARE	@teacher		AS	INT		=	(SELECT teacher_id			FROM Teachers		WHERE last_name = @teacher_last_name);
 	DECLARE @date			AS	DATE	=	IIF(@start_date != '1900-01-01', @start_date, dbo.GetNextLearningDay(@group_name, DEFAULT));
-	DECLARE @holidays_count	AS	INT		=	(SELECT COUNT(*) FROM Holidays);
-	DECLARE @holid_count_id	AS	INT		=	1;
-	DECLARE @start_holid	AS  DATE	=	(SELECT holiday_start_date	FROM Holidays		WHERE holiday_id = @holid_count_id);	
-	DECLARE	@end_holid		AS	DATE	=	(SELECT holiday_end_date	FROM Holidays		WHERE holiday_id = @holid_count_id);
-
 	SET @start_time			=	IIF(@start_time != '00:00', @start_time, (SELECT start_time FROM Groups WHERE group_id=@group));
-
-	PRINT(@group);
-	PRINT(@discipline);
-	PRINT(@lessons_count);
-	PRINT(@start_date);
-	PRINT(@start_time);
 
 	IF EXISTS		(SELECT lesson_id FROM Schedule WHERE [group]=@group AND discipline=@discipline)
 	BEGIN
@@ -39,28 +28,35 @@ BEGIN
 		RETURN;
 	END
 
-	WHILE @lesson_number <= @lessons_count AND @holid_count_id <= @holidays_count
+	
+
+	WHILE @lesson_number <= @lessons_count  
 	BEGIN
 	
-		 IF NOT EXISTS	(SELECT lesson_id FROM Schedule WHERE [group]=@group AND discipline = @discipline AND [date]=@date AND [time]=@start_time)
-		 BEGIN
-			IF (@date < @start_holid AND @date > @end_holid)
+		IF NOT EXISTS	(SELECT lesson_id FROM Schedule WHERE [group]=@group AND discipline = @discipline AND [date]=@date AND [time]=@start_time)
+		BEGIN
+			IF	EXISTS	(SELECT holiday_id FROM Holidays WHERE holiday_date = @date)
 			BEGIN
-				INSERT Schedule
-					([group], discipline, teacher, [date], [time], spent)
-				VALUES
-					(@group, @discipline, @teacher, @date, @start_time, IIF(@date<GETDATE(),1,0)),
-					(@group, @discipline, @teacher, @date, DATEADD(MINUTE,95,@start_time), IIF(@date<GETDATE(),1,0));			
+				SET	@date =	DATEADD(DAY, 1, @date);
+				CONTINUE
 			END
+			IF	(DATENAME(WEEKDAY, @date) IN (SELECT study_day FROM StudyScheme WHERE scheme_name = @study_scheme))
+			BEGIN
+				INSERT	Schedule
+						([group]	,discipline,	teacher,	[date],	[time],	spent)
+				VALUES
+						(@group,	@discipline,	@teacher,	@date,	@start_time,						IIF(@date < GETDATE(), 1, 0)),
+						(@group,	@discipline,	@teacher,	@date,	DATEADD(MINUTE, 95, @start_time),	IIF(@date < GETDATE(), 1, 0));
+			SET	@lesson_number	=	@lesson_number	+	2;
+			END
+		END
 			ELSE
 			BEGIN
 				PRINT('--- 2 ---');
 				PRINT(FORMATMESSAGE(N'%s %s у группы %s уже занято', CAST(@date AS NCHAR(10)), CAST(@start_time AS NCHAR(8)), @group_name));
 			END
-			SET	@lesson_number	= @lesson_number+2;
-			SET @date			= dbo.GetNextLearningDay(@group_name, DEFAULT);
 			--SET @date			= DATEADD(DAY, IIF(DATEPART(WEEKDAY,@date)=5, 3, 2), @date);
-		END
-	SET @holid_count_id = @holid_count_id + 1;
+			--SET	@lesson_number	= @lesson_number+2;
+			SET @date			= dbo.GetNextLearningDay(@group_name, DEFAULT);
 	END
 END
