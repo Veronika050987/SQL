@@ -100,6 +100,18 @@
           <AssociatedConnUserName />
           <FullPath>SQLQuery5-INSERT Schedule PV_211.sql</FullPath>
         </FileNode>
+        <FileNode Name="SQLQuery6-CREATE PROCEDURE sp_Holidays.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-4AUB2J6T\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-4AUB2J6T\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery6-CREATE PROCEDURE sp_Holidays.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery6-CREATE PROCEDURE sp_InsertLesson.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-4AUB2J6T\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-4AUB2J6T\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery6-CREATE PROCEDURE sp_InsertLesson.sql</FullPath>
+        </FileNode>
       </Items>
     </LogicalFolder>
     <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">

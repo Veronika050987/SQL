@@ -1,0 +1,10 @@
+--SQLQuery6-CREATE PROCEDURE sp_InsertLesson.sql
+USE PD_321;
+GO
+
+CREATE PROCEDURE sp_InsertLesson
+AS
+BEGIN
+
+END
+
