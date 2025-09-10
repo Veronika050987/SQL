@@ -40,7 +40,7 @@ BEGIN
 				SET	@date =	DATEADD(DAY, 1, @date);
 				CONTINUE
 			END
-			IF	(DATENAME(WEEKDAY, @date) IN (SELECT study_day FROM StudyScheme WHERE scheme_name = @study_scheme))
+			ELSE
 			BEGIN
 				INSERT	Schedule
 						([group]	,discipline,	teacher,	[date],	[time],	spent)
@@ -50,8 +50,8 @@ BEGIN
 			SET	@lesson_number	=	@lesson_number	+	2;
 			END
 		END
-			ELSE
-			BEGIN
+		ELSE
+		BEGIN
 				PRINT('--- 2 ---');
 				PRINT(FORMATMESSAGE(N'%s %s у группы %s уже занято', CAST(@date AS NCHAR(10)), CAST(@start_time AS NCHAR(8)), @group_name));
 			END
