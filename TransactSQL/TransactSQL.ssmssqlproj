@@ -136,6 +136,12 @@
           <AssociatedConnUserName />
           <FullPath>SQLQuery8-EasterDateDetermine.sql</FullPath>
         </FileNode>
+        <FileNode Name="SQLQuery9-SummerHolidaysStart.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-4AUB2J6T\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-4AUB2J6T\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery9-SummerHolidaysStart.sql</FullPath>
+        </FileNode>
       </Items>
     </LogicalFolder>
     <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">

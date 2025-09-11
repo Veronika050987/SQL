@@ -11,6 +11,7 @@ AS
 BEGIN
 	EXEC sp_SetNewYearHolidays @year, N'Новогодние%';
 	EXEC sp_EasterDateDetermine @year, N'Пасха%';
+	EXEC sp_SummerHolidaysStart @year, N'Летние%';
 
 	SELECT
 		[Дата]		=	[date],
