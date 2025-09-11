@@ -52,6 +52,12 @@
           <AssociatedConnUserName />
           <FullPath>SQLQuery100-IsLearningDay.sql</FullPath>
         </FileNode>
+        <FileNode Name="SQLQuery10-DaysOffInsert.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-4AUB2J6T\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-4AUB2J6T\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery10-DaysOffInsert.sql</FullPath>
+        </FileNode>
         <FileNode Name="SQLQuery1-INSERT Schedule.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-4AUB2J6T\SQLEXPRESS:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>LAPTOP-4AUB2J6T\SQLEXPRESS</AssociatedConnSrvName>
