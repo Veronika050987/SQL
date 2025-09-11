@@ -112,6 +112,30 @@
           <AssociatedConnUserName />
           <FullPath>SQLQuery6-CREATE PROCEDURE sp_InsertLesson.sql</FullPath>
         </FileNode>
+        <FileNode Name="SQLQuery7-HolidaysCheck.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-4AUB2J6T\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-4AUB2J6T\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery7-HolidaysCheck.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery7-SetDaysOff.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-4AUB2J6T\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-4AUB2J6T\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery7-SetDaysOff.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery7-SetNewYearHolidays.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-4AUB2J6T\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-4AUB2J6T\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery7-SetNewYearHolidays.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery8-EasterDateDetermine.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-4AUB2J6T\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-4AUB2J6T\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery8-EasterDateDetermine.sql</FullPath>
+        </FileNode>
       </Items>
     </LogicalFolder>
     <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
