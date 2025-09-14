@@ -15,10 +15,20 @@ GO
 --);
 
 --CREATE TABLE DaysOFF
-ALTER TABLE DaysOFF
+--ALTER TABLE DaysOFF
+--(
+--	dayoff_id		SMALLINT		PRIMARY KEY IDENTITY(1,1),--(SEED - начальное семя, STEP - шаг, на который идёт увеличение)
+--	[date]			DATE			NOT NULL,
+--	holiday			TINYINT			NOT NULL
+--	CONSTRAINT FK_DaysOFF_to_Holidays2 FOREIGN KEY REFERENCES Holidays2(holiday_id)
+--);
+
+CREATE TABLE CompleteDisciplines
 (
-	dayoff_id		SMALLINT		PRIMARY KEY IDENTITY(1,1),--(SEED - начальное семя, STEP - шаг, на который идёт увеличение)
-	[date]			DATE			NOT NULL,
-	holiday			TINYINT			NOT NULL
-	CONSTRAINT FK_DaysOFF_to_Holidays2 FOREIGN KEY REFERENCES Holidays2(holiday_id)
+	complete_id		INT	        	PRIMARY KEY IDENTITY(1,1),
+	[group]			INT				NOT NULL	
+	CONSTRAINT FK_CompleteDiscipline_Groups			FOREIGN KEY REFERENCES  Groups(group_id),
+	discipline		SMALLINT		NOT NULL
+	CONSTRAINT FK_CompleteDiscipline_Disciplines	FOREIGN KEY REFERENCES	Disciplines(discipline_id),
+	[date]			DATE			NOT NULL UNIQUE
 );

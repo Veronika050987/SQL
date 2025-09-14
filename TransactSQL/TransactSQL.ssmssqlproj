@@ -34,6 +34,12 @@
           <AssociatedConnUserName />
           <FullPath>SQLQuery0-Calling Procedures.sql</FullPath>
         </FileNode>
+        <FileNode Name="SQLQuery1_fnGetOrthodoxEasterDate.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-4AUB2J6T\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-4AUB2J6T\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery1_fnGetOrthodoxEasterDate.sql</FullPath>
+        </FileNode>
         <FileNode Name="SQLQuery1_TMP.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-4AUB2J6T\SQLEXPRESS:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>LAPTOP-4AUB2J6T\SQLEXPRESS</AssociatedConnSrvName>
@@ -57,6 +63,12 @@
           <AssociatedConnSrvName>LAPTOP-4AUB2J6T\SQLEXPRESS</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>SQLQuery10-DaysOffInsert.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery11-InsertIntoCompleteDisciplines.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-4AUB2J6T\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-4AUB2J6T\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery11-InsertIntoCompleteDisciplines.sql</FullPath>
         </FileNode>
         <FileNode Name="SQLQuery1-INSERT Schedule.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-4AUB2J6T\SQLEXPRESS:True</AssociatedConnectionMoniker>

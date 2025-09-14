@@ -19,4 +19,4 @@ BEGIN
 		[Праздник]	=	holiday_name
 	FROM DaysOFF 
 	JOIN Holidays2 ON (holiday=holiday_id)
-END
+END 

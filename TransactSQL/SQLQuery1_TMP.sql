@@ -1,135 +1,34 @@
-DECLARE @StartTime TIME(0) = '13:30:00'; -- Начало первой пары
-DECLARE @PairDuration INT = 95; -- Длительность одной пары в минутах
-DECLARE @BreakDuration INT = 10; -- Длительность перерыва между парами в минутах
-DECLARE @TargetLessons INT = 20; -- Общее количество занятий
+DECLARE @HolidayStartDate DATE, @HolidayEndDate DATE, @HolidayName VARCHAR(100);
 
--- Объявляем временную таблицу для хранения расписания
-IF OBJECT_ID('tempdb..#Schedule_tmp') IS NOT NULL DROP TABLE #Schedule_tmp;
-CREATE TABLE #Schedule_tmp (
-    Date DATE,
-    DayOfWeek VARCHAR(20),
-    PairNumber INT,
-    StartTime TIME(0),
-    EndTime TIME(0),
-    Description VARCHAR(50)
-);
+-- --- Добавление Пасхи для диапазона лет ---
 
--- Объявляем переменные для цикла
-DECLARE @CurrentDate DATE = DATEADD(wk,DATEDIFF(wk,0,GETDATE()),0); -- Начинаем с ближайшего понедельника
-DECLARE @LessonCounter INT = 0; -- Счетчик сгенерированных занятий
+DECLARE @StartYearForHolidays INT = 2024; -- Год, с которого начинаем генерацию праздников
+DECLARE @EndYearForHolidays INT = 2030; -- Год, до которого генерируем праздники
+DECLARE @LoopYear INT = @StartYearForHolidays;
+DECLARE @EasterDate DATE;
+DECLARE @EasterHolidayStartDate DATE;
+DECLARE @EasterHolidayEndDate DATE;
+DECLARE @EasterHolidayDuration INT = 3; -- Продолжительность выходных на Пасху (например, 3 дня: сама Пасха + 2)
 
--- Цикл для генерации занятий до достижения целевого количества
-WHILE @LessonCounter < @TargetLessons
+WHILE @LoopYear <= @EndYearForHolidays
 BEGIN
-    -- Проверяем, является ли текущий день нужным днем недели
-    -- DATEPART(WEEKDAY, @CurrentDate) = 2 для Понедельника (по умолчанию)
-    -- DATEPART(WEEKDAY, @CurrentDate) = 5 для Четверга (по умолчанию)
-    -- DATEPART(WEEKDAY, @CurrentDate) = 6 для Пятницы (по умолчанию)
+ SET @EasterDate = dbo.fnGetOrthodoxEasterDate(@LoopYear); -- Используем нашу функцию
+ SET @EasterHolidayStartDate = @EasterDate;
+ SET @EasterHolidayEndDate = DATEADD(DAY, @EasterHolidayDuration - 1, @EasterDate); -- -1, так как сама Пасха уже считается первым днем
 
-    -- Генерируем занятия для Понедельника
-    IF DATEPART(WEEKDAY, @CurrentDate) = 2 -- Понедельник
-    BEGIN
-        -- Пара 1
-        INSERT INTO #Schedule_tmp (Date, DayOfWeek, PairNumber, StartTime, EndTime, Description)
-        VALUES (
-            @CurrentDate,
-            'Понедельник',
-            1,
-            @StartTime,
-            DATEADD(MINUTE, @PairDuration, @StartTime),
-            'Пара 1'
-        );
-        SET @LessonCounter = @LessonCounter + 1;
-        IF @LessonCounter >= @TargetLessons BREAK; -- Выходим, если достигли цели
+PRINT (@EasterHolidayStartDate);
+PRINT (@EasterHolidayEndDate);
+PRINT ('--------------')
 
-        -- Пара 2
-        DECLARE @SecondPairStartTime TIME(0) = DATEADD(MINUTE, @PairDuration + @BreakDuration, @StartTime);
-        INSERT INTO #Schedule_tmp (Date, DayOfWeek, PairNumber, StartTime, EndTime, Description)
-        VALUES (
-            @CurrentDate,
-            'Понедельник',
-            2,
-            @SecondPairStartTime,
-            DATEADD(MINUTE, @PairDuration, @SecondPairStartTime),
-            'Пара 2'
-        );
-        SET @LessonCounter = @LessonCounter + 1;
-        IF @LessonCounter >= @TargetLessons BREAK; -- Выходим, если достигли цели
-    END;
+ WHILE @EasterHolidayStartDate <= @EasterHolidayEndDate
+ BEGIN
+ --INSERT INTO dbo.Holidays (HolidayDate, HolidayName)
+ --VALUES (@EasterHolidayStartDate, 'Пасха');
+ PRINT (@EasterHolidayStartDate);
 
-    -- Генерируем занятия для Четверга
-    IF DATEPART(WEEKDAY, @CurrentDate) = 5 -- Четверг
-    BEGIN
-        -- Пара 1
-        INSERT INTO #Schedule_tmp (Date, DayOfWeek, PairNumber, StartTime, EndTime, Description)
-        VALUES (
-            @CurrentDate,
-            'Четверг',
-            1,
-            @StartTime,
-            DATEADD(MINUTE, @PairDuration, @StartTime),
-            'Пара 1'
-        );
-        SET @LessonCounter = @LessonCounter + 1;
-        IF @LessonCounter >= @TargetLessons BREAK; -- Выходим, если достигли цели
+ SET @EasterHolidayStartDate = DATEADD(DAY, 1, @EasterHolidayStartDate);
+ END;
 
-        -- Пара 2
-        SET @SecondPairStartTime = DATEADD(MINUTE, @PairDuration + @BreakDuration, @StartTime);
-        INSERT INTO #Schedule_tmp (Date, DayOfWeek, PairNumber, StartTime, EndTime, Description)
-        VALUES (
-            @CurrentDate,
-            'Четверг',
-            2,
-            @SecondPairStartTime,
-            DATEADD(MINUTE, @PairDuration, @SecondPairStartTime),
-            'Пара 2'
-        );
-        SET @LessonCounter = @LessonCounter + 1;
-        IF @LessonCounter >= @TargetLessons BREAK; -- Выходим, если достигли цели
-    END;
+ SET @LoopYear = @LoopYear + 1;
 
-    -- Генерируем занятия для Пятницы
-    IF DATEPART(WEEKDAY, @CurrentDate) = 6 -- Пятница
-    BEGIN
-        -- Пара 1
-        INSERT INTO #Schedule_tmp (Date, DayOfWeek, PairNumber, StartTime, EndTime, Description)
-        VALUES (
-            @CurrentDate,
-            'Пятница',
-            1,
-            @StartTime,
-            DATEADD(MINUTE, @PairDuration, @StartTime),
-            'Пара 1'
-        );
-        SET @LessonCounter = @LessonCounter + 1;
-        IF @LessonCounter >= @TargetLessons BREAK; -- Выходим, если достигли цели
-
-        -- Пара 2
-        SET @SecondPairStartTime = DATEADD(MINUTE, @PairDuration + @BreakDuration, @StartTime);
-        INSERT INTO #Schedule_tmp (Date, DayOfWeek, PairNumber, StartTime, EndTime, Description)
-        VALUES (
-            @CurrentDate,
-            'Пятница',
-            2,
-            @SecondPairStartTime,
-            DATEADD(MINUTE, @PairDuration, @SecondPairStartTime),
-            'Пара 2'
-        );
-        SET @LessonCounter = @LessonCounter + 1;
-        IF @LessonCounter >= @TargetLessons BREAK; -- Выходим, если достигли цели
-    END;
-
-    -- Переходим к следующему дню
-    SET @CurrentDate = DATEADD(DAY, 1, @CurrentDate);
-END;
-
--- Выбираем данные из временной таблицы
-SELECT
-    Date AS Дата,
-    DayOfWeek AS День_Недели,
-    PairNumber AS Номер_Пары,
-    StartTime AS Время_начала,
-    EndTime AS Время_окончания,
-    Description AS Описание
-FROM #Schedule_tmp
-ORDER BY Date, PairNumber;
+ END
